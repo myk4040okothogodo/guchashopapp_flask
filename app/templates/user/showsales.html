@@ -1,0 +1,22 @@
+{% extends 'layout.html'%}
+{% import "_macros.html" as macros %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="ui header">{{ title }}</h1>
+    
+        {% if current_user.is_authenticated %}
+            <h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
+        {% endif %}  
+        <p>{{ (current_time) }}</p>  
+        {% include '_sales.html' %}
+        <div class="pagination">
+        {{ macros.pagination_widget(pagination,'.salesheet') }}
+        </div>
+{% endblock %}
+{% block scripts %}
+
+{% endblock %}        

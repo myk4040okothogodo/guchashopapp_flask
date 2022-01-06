@@ -1,0 +1,26 @@
+{% extends 'layout.html'%}
+
+
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1 class="ui header">{{ title }}</h1>
+    <div class="ui header">
+         <p>{{ (current_time) }}.</p>
+         <h2>sales point</h2>
+    </div> 
+       <div class="ui form-user center raised very padded text container segment ">
+        <form class="ui form" action="{{ url_for ('.sellingpoint') }}" method="post">
+         {{ m.render_field(form.product_type) }} 
+         {{ m.render_field(form.price) }}
+         {{ m.render_field(form.quantity) }}
+         {{ m.render_field(form.percentage_profit) }}   
+         {{ form.csrf_token }}
+<button class="ui primary button" type="submit">save</button>
+        </form>
+      </div>
+           
+        
+                  
+{% endblock %}   

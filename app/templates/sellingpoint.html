@@ -1,0 +1,24 @@
+{% extends 'layout.html'%}
+{% import "bootstrap/wtf.html" as wtf%}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="ui header">{{ title }}</h1>
+    <div class="ui header">
+         <p>{{ moment(current_time).format('LLL') }}.</p>
+         <h1>sales point</h1>
+      </div>
+    
+        {% if current_user.is_authenticated %}
+        <div>
+         {{ wtf.quick_form(form) }}
+         </div>
+           
+        {% else %}
+            <h2 class="ui header">Hi stranger!, authenticate to log in sales.</h2>    
+        {% endif %} 
+                  
+{% endblock %}   

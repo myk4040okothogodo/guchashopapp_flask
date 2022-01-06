@@ -1,0 +1,29 @@
+{% extends 'layout.html'%}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="ui header">{{ title }}</h1>
+    
+        {% if current_user.is_authenticated %}
+           <div class="ui header">
+             <h2>shop stock</h2>
+           </div> 
+       <div class="ui form-user center raised very padded text container segment ">
+        <form class="ui form" action="{{ url_for ('.addstock') }}" method="post">
+         {{ m.render_field(form.product_type) }} 
+         {{ m.render_field(form.quantity) }}
+         {{ m.render_field(form.purchase_price) }}
+         {{ m.render_field(form.manufacturer) }}   
+         {{ form.csrf_token }}
+<button class="ui primary button" type="submit">save</button>
+        </form>
+      </div>  
+        {% else %}
+            <h2 class="ui header">Hi stranger!, login to add stock to shop database.</h2>    
+        {% endif %} 
+                  
+{% endblock %}   

@@ -1,0 +1,26 @@
+{% extends 'layout.html'%}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+    <h1 class="ui header">{{ title }}</h1>
+    
+        {% if current_user.is_authenticated %}
+            <h2 class="ui header">Hi {{ current_user.first_name }}!</h2>
+            
+            <div class="pagination">
+            <ul>
+            {% for account in accounts %}
+            <li>
+           <a href="{{ url_for('.accounts', id=account.id)}}"> {{ account.name }}</a>
+            </li>
+            </ul>
+            
+            </div>
+        {% else %}
+            <h2 class="ui header">Hi stranger!, login to view the accounts.</h2>    
+        {% endif %} 
+                  
+{% endblock %}   

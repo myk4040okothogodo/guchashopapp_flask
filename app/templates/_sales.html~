@@ -1,0 +1,31 @@
+
+<table class="sales" summary="details of shop sales made">
+
+    <tr>
+        <th><strong>TIME</strong></th>
+        <th><strong>PRODUCT</strong></th>
+        <th><strong>MANUFACTURER</strong></th>
+        <th><strong>QTY-SOLD</strong></th>
+        <th><strong>%-PROFIT</strong></th>
+        <th><strong>PRICE</strong></th>    
+        <th><strong>TOTAL</strong></th>
+        <th><strong>ACCOUNT</strong></th>
+    </tr>
+    {% for sale in sales %}
+    <tr>
+        <div class="sale-body">
+        <td><em>{{ sale.timestamp }}</em></td>
+        <td><em>{{ sale.product_sold }}</em></td>
+        <td><em>{{ sale.manufacturer }}</em></td>
+        <td><em>{{ sale.quantity }}</em></td>
+        <td><em>{{ sale.percentage_profit }}</em></td>
+        <td><em>{{ sale.price}}</em></td>
+        <td><em>{{ (sale.quantity*sale.price)}}</em></td>
+        <td><em>N/A</em></td>
+        
+        </div>
+       </tr> 
+       {% endfor %}
+      
+       
+</table>  
